@@ -1,0 +1,77 @@
+Day1_part1.txt
+
+Explanation of the Solution
+
+This C program calculates the total “distance” between two lists of location IDs, corresponding to the puzzle "Historian Hysteria" (Day 1, Part 1). The distance is the sum of absolute differences between paired numbers from the two lists, paired optimally.
+
+Step-by-step explanation:
+
+Reading the Input:
+
+The program opens the file input1.txt, which contains pairs of integers (location IDs) on each line.
+
+It reads the first number of each pair into an array called left[] and the second number into an array called right[].
+
+The program continues reading until all numbers from the file are stored, keeping track of the total count n.
+
+Sorting the Arrays:
+
+Both left[] and right[] arrays are sorted in ascending order using qsort.
+
+Sorting ensures that each smallest number in the left list is paired with the smallest number in the right list, the second smallest with the second smallest, and so on.
+
+This method minimizes the total sum of absolute differences, which is the goal of the puzzle.
+
+Calculating Total Distance:
+
+After sorting, the program iterates through both arrays simultaneously.
+
+For each index i, it calculates the absolute difference between left[i] and right[i].
+
+These differences are accumulated into the variable total_distance.
+
+Output:
+
+Finally, the program prints the total distance to the console.
+
+
+Pairing numbers after sorting guarantees that each left number is matched with the closest possible right number, which minimizes the sum of absolute differences.
+
+This is a simple greedy approach, which is optimal for this type of problem.
+
+Example:
+
+Input file:
+
+3 4
+4 3
+2 5
+1 3
+3 9
+3 3
+
+
+Steps:
+
+left[] = [3,4,2,1,3,3] → sorted → [1,2,3,3,3,4]
+
+right[] = [4,3,5,3,9,3] → sorted → [3,3,3,4,5,9]
+
+Absolute differences:
+
+abs(1-3) = 2
+abs(2-3) = 1
+abs(3-3) = 0
+abs(3-4) = 1
+abs(3-5) = 2
+abs(4-9) = 5
+
+
+Total distance = 2 + 1 + 0 + 1 + 2 + 5 = 11
+
+This matches the example provided in the puzzle description.
+
+Conclusion:
+The program efficiently computes the total distance between the two location ID lists by reading the input, sorting both arrays, and summing the absolute differences. For the actual puzzle input, it correctly outputs 1197984.
+
+\\compile the program with gcc day1_part1.c -o day1_part1.exe

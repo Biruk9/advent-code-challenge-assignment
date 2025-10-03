@@ -1,0 +1,103 @@
+compile the program with"gcc day4_part1.c -o day4_part1.exe"
+
+Report: Ceres Search – Counting Occurrences of “XMAS”
+Problem Overview
+
+You were given a word search grid containing letters arranged in rows and columns. The task was to find all occurrences of the word XMAS in the grid. The word could appear:
+
+Horizontally (left → right or right → left)
+
+Vertically (top → bottom or bottom → top)
+
+Diagonally in any direction
+
+Overlapping other words
+
+The goal was to count every valid occurrence of XMAS regardless of orientation or overlap.
+
+Approach
+Step 1: Read the Word Search Grid
+
+Open the input file input1.txt.
+
+Read each line into a 2D array grid[MAX][MAX].
+
+Track the number of rows and columns.
+
+Remove newline characters at the end of each line.
+
+while(fgets(grid[rows], MAX, f)) {
+    int len = strlen(grid[rows]);
+    if(grid[rows][len-1] == '\n') grid[rows][len-1] = '\0';
+    if(cols == 0) cols = strlen(grid[rows]);
+    rows++;
+}
+
+Step 2: Define Directions to Search
+
+Define 8 directions for searching the word:
+
+| Direction   | dx | dy |
+| ----------- | -- | -- |
+| Right       | 0  | 1  |
+| Left        | 0  | -1 |
+| Down        | 1  | 0  |
+| Up          | -1 | 0  |
+| Diagonal DR | 1  | 1  |
+| Diagonal DL | 1  | -1 |
+| Diagonal UR | -1 | 1  |
+| Diagonal UL | -1 | -1 |
+
+
+This allows the word to be found in all possible orientations.
+
+Step 3: Scan the Grid
+
+Loop over every cell (i,j) in the grid.
+
+For each cell, attempt to match the word XMAS in all 8 directions.
+
+Use a nested loop for the length of the word (k = 0 to 3).
+
+Compute the next cell (ni, nj) = (i + dx[dir]*k, j + dy[dir]*k).
+
+If (ni,nj) goes outside the grid or the character does not match, break.
+
+If all letters match, increment the counter.
+
+for(int i = 0; i < rows; i++) {
+    for(int j = 0; j < cols; j++) {
+        for(int dir = 0; dir < 8; dir++) {
+            int k;
+            for(k = 0; k < word_len; k++) {
+                int ni = i + dx[dir]*k;
+                int nj = j + dy[dir]*k;
+                if(ni < 0 || nj < 0 || ni >= rows || nj >= cols) break;
+                if(grid[ni][nj] != WORD[k]) break;
+            }
+            if(k == word_len) count++;
+        }
+    }
+}
+
+Step 4: Output the Result
+
+After scanning the entire grid, print the total count of XMAS occurrences.
+
+printf("Total occurrences of '%s': %d\n", WORD, count);
+
+Key Points
+
+8-directional search ensures no occurrence is missed.
+
+Bounds checking prevents access outside the grid.
+
+Overlapping occurrences are counted individually.
+
+Efficient use of nested loops allows scanning large grids quickly.
+
+Result
+
+After processing the input word search:
+
+Total occurrences of "XMAS" = 2633

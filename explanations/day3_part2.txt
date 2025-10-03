@@ -1,0 +1,107 @@
+Solving the Corrupted Memory mul(X,Y) Problem
+
+compile the program with "gcc day3_part2.c -o day3_part2.exe"
+
+Problem Overview
+
+In addition to the corrupted mul(X,Y) instructions from Part One, Part Two introduced conditional instructions:
+
+do() → enables subsequent mul instructions.
+
+don't() → disables subsequent mul instructions.
+
+Only the most recent conditional instruction applies at any point in the memory. Initially, mul is enabled.
+
+Invalid sequences or corrupted instructions are still ignored. The goal is to sum only the results of enabled mul instructions.
+
+Approach
+Step 1: Read the Memory File
+
+Open input3.txt for reading.
+
+Determine file size using fseek and ftell.
+
+Allocate memory and read the entire file into a buffer.
+
+Null-terminate the buffer for safe string operations.
+
+fseek(fp, 0, SEEK_END);
+long fsize = ftell(fp);
+fseek(fp, 0, SEEK_SET);
+
+char *data = malloc(fsize + 1);
+fread(data, 1, fsize, fp);
+data[fsize] = '\0';
+fclose(fp);
+
+Step 2: Track mul Enable State
+
+Introduce a variable mul_enabled to track whether mul instructions should be processed.
+
+Initially, mul_enabled = 1 (enabled).
+
+Update mul_enabled whenever do() or don't() is encountered.
+
+if (strncmp(p, "do()", 4) == 0) {
+    mul_enabled = 1;
+    p += 4;
+} else if (strncmp(p, "don't()", 7) == 0) {
+    mul_enabled = 0;
+    p += 7;
+}
+
+Step 3: Parse Valid mul(X,Y) Instructions
+
+Scan through the buffer character by character.
+
+Identify sequences starting with "mul(".
+
+Parse X and Y numbers digit by digit.
+
+Ensure proper syntax (comma between numbers, closing parenthesis )).
+
+Only add to total if mul_enabled is true.
+
+else if (strncmp(p, "mul(", 4) == 0) {
+    p += 4;
+    int x = 0, y = 0;
+    while (isdigit(*p)) { x = x*10 + (*p - '0'); p++; }
+    if (*p != ',') continue;
+    p++;
+    while (isdigit(*p)) { y = y*10 + (*p - '0'); p++; }
+    if (*p != ')') continue;
+    p++;
+    if (mul_enabled) total += (long long)x * y;
+}
+
+Step 4: Skip Invalid Characters
+
+Any other character or malformed sequence is ignored.
+
+This ensures corrupted memory does not interfere with parsing.
+
+else { p++; }
+
+Step 5: Compute the Total
+
+Use a long long variable to store the sum because the total can be very large.
+
+After scanning the entire memory, print the result.
+
+printf("%lld\n", total);
+
+Key Points
+
+Conditional Handling: do() and don't() affect all subsequent mul instructions until the next conditional.
+
+Strict Validation: Only exact matches of mul(X,Y) with valid numbers are processed.
+
+Corrupted Memory Ignored: Invalid sequences or malformed instructions are skipped.
+
+Large Numbers: long long ensures totals exceeding 2^31 can be stored safely.
+
+Result
+
+After processing the corrupted memory with conditional instructions:
+
+Total sum of enabled mul(X,Y) instructions = 76,911,921

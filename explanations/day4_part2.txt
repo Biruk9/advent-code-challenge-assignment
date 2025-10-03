@@ -1,0 +1,81 @@
+X-MAS Pattern Search – Detecting “MAS” in an X Shape
+
+compile the program with "gcc day4_part2.c -o day4_part2.exe"
+
+Problem Overview
+
+This part of the puzzle was a variation of the previous XMAS word search. Instead of searching for the word XMAS, the task was to detect X-MAS patterns, defined as:
+
+An ‘A’ at the center of the pattern.
+
+Two MAS sequences forming an X shape diagonally across the center.
+
+The MAS sequences can appear forwards or backwards.
+
+The goal was to count all such X-MAS patterns in the grid.
+
+Approach
+Step 1: Read the Grid
+
+Open the input file input1.txt.
+
+Read each line into a 2D array grid[MAX][MAX].
+
+Track the number of rows and columns.
+
+Remove newline characters at the end of each line.
+
+while(fgets(grid[rows], MAX, f)) {
+    int len = strlen(grid[rows]);
+    if(grid[rows][len-1] == '\n') grid[rows][len-1] = '\0';
+    if(cols == 0) cols = strlen(grid[rows]);
+    rows++;
+}
+
+Step 2: Scan for X-MAS Patterns
+
+Iterate over every internal cell (i,j) in the grid (excluding borders) because the pattern requires neighbors in all four diagonal directions.
+
+Check if the center cell is 'A'.
+
+Examine the diagonal neighbors:
+
+Diagonal	Neighbor cells	Valid MAS?
+Top-left ↘ Bottom-right	(i-1,j-1) and (i+1,j+1)	M-S or S-M
+Top-right ↘ Bottom-left	(i-1,j+1) and (i+1,j-1)	M-S or S-M
+
+If both diagonals match, increment the count.
+
+if(grid[i][j] == 'A') {
+    char tl = grid[i-1][j-1];
+    char br = grid[i+1][j+1];
+    int diag1 = (tl=='M' && br=='S') || (tl=='S' && br=='M');
+
+    char tr = grid[i-1][j+1];
+    char bl = grid[i+1][j-1];
+    int diag2 = (tr=='M' && bl=='S') || (tr=='S' && bl=='M');
+
+    if(diag1 && diag2) count++;
+}
+
+Step 3: Output the Total
+
+Print the total number of X-MAS patterns detected.
+
+printf("Total X-MAS patterns: %d\n", count);
+
+Key Points
+
+Pattern Detection: The pattern is recognized only when the center is ‘A’ and the diagonals form MAS forwards or backwards.
+
+Bounds Checking: Only internal cells (1..rows-2, 1..cols-2) are checked to avoid out-of-bounds errors.
+
+Flexible Matching: Both M-S and S-M are considered valid diagonals.
+
+Overlapping Patterns: Patterns can overlap, and each valid center counts independently.
+
+Result
+
+After processing the input word search grid:
+
+Total X-MAS patterns = 1936

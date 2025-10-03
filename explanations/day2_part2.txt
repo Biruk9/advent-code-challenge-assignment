@@ -1,0 +1,97 @@
+1. Program Purpose
+
+The program analyzes a file (input1.txt) where each line contains a sequence of integers . Its goal is to count how many reports are safe, based on two rules:
+
+Original Safety Rules:
+
+-A report is safe if:
+
+:All numbers are strictly increasing or strictly decreasing (no mix).
+
+:The difference between adjacent numbers is at least 1 and at most 3 (in absolute value).
+
+:No two adjacent numbers can be equal.
+
+Extra Rule for Part Two:
+
+If a report is not safe, it can still count as safe if removing exactly one number makes it safe.
+
+This feature is called the Problem Dampener.
+
+The final output prints how many reports are safe under these conditions.
+
+2. Function: is_safe(int arr[], int n)
+
+This function checks if a sequence is safe without using the dampener.
+
+Steps:
+
+Edge case: A single number is considered safe.
+
+if (n < 1) return true;
+
+Determine direction (increasing or decreasing):
+
+int diff = arr[1] - arr[0];
+if (diff == 0) return false;
+bool increasing = (diff > 0);
+
+Validate every adjacent pair:
+
+for (int i = 1; i < n; i++) {
+    int d = arr[i] - arr[i-1];
+    if (d == 0) return false;
+    if (increasing && d < 0) return false;
+    if (!increasing && d > 0) return false;
+    if (d > 3 || d < -3) return false;
+}
+
+If all checks pass, return true.
+
+Function: is_safe_with_dampener(int arr[], int n)
+
+This function applies both normal safety rules and the Problem Dampener:
+
+Check if already safe:
+if (is_safe(arr, n)) return true;
+
+Try removing each element one at a time:
+for (int i = 0; i < n; i++) {
+    int temp[100];
+    int k = 0;
+    for (int j = 0; j < n; j++) {
+        if (j != i) temp[k++] = arr[j];
+    }
+    if (is_safe(temp, k)) return true;
+}
+
+:Each time, one element is removed.
+
+:If any modified version is safe → report counts as safe.
+
+:If no removal works → return false.
+
+This implements the Problem Dampener rule.
+
+Main Function Logic
+FILE *f = fopen("input1.txt", "r");
+:Opens the report file for reading.
+
+while (1) {
+    n = 0;
+    while (fscanf(f, "%d", &arr[n]) == 1) {
+        n++;
+        if (fgetc(f) == '\n') break;
+    }
+    if (n == 0) break;
+Reads numbers into arr[] until a newline ends the line.
+
+Each line is processed separately.
+
+if (is_safe_with_dampener(arr, n)) safe_count++;
+
+:Applies the full safety logic with dampener.
+
+Finaly
+printf("safe reports: %d\n", safe_count);
+compile the program with gcc day2_part2.c -o day2_part2.exe

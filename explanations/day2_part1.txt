@@ -1,0 +1,89 @@
+This C program analyzes a text file (input1.txt) where each line represents a report consisting of space-separated integers. For each report, the program checks whether it is safe according to two rules:
+
+All numbers must be strictly increasing or strictly decreasing (no mix).
+
+The difference between any two adjacent numbers must be at least 1 and at most 3, in absolute value.
+
+The program counts how many lines satisfy both rules and prints the result.
+ 
+steps:
+1)opening the file: 
+FILE *f=fopen("input1.text","r");
+if(!f){
+printf("could not open file\n");
+}
+:the program tries to open input.txt in read mode
+:if the file can not be opened it shows error message.
+
+2)reading each line
+
+char line[256];
+int safe_count=0;
+int line_num=1;
+while ( fgets(line,sizeof(line),f))
+:line-holde a line from the file
+:fgets-reads one full line at a time.
+:safe_count-keeps track of how many reports are safe. 
+:line_num is only used for printing which line is safe or unsafe.
+
+3)splitting the line into integers
+
+int arr[50], n = 0;
+char *token = strtok(line, " \n");
+while (token != NULL) {
+    arr[n++] = atoi(token);
+    token = strtok(NULL, " \n");
+}
+
+:each number from the line is extracting using strtok.
+:atoi converts the extracted string into integer.
+:all numbers are stored in arr,and n in the count.
+
+4)initial safty check:
+
+bool safe = true;
+int diff = arr[1] - arr[0];
+
+if (diff == 0 || abs(diff) > 3) safe = false;
+bool increasing = (diff > 0);
+
+:compute the difference between the first two numbers.
+:if the difference is o or greater than 3,the report unsafe.
+:determine the direction: increasing or decreasing
+
+5) check the rest of the report
+
+for (int i = 1; i < n && safe; i++) {
+    int d = arr[i] - arr[i-1];
+    if (d == 0 || abs(d) > 3) safe = false;
+    if (increasing && d < 0) { safe = false; break; }
+    if (!increasing && d > 0) safe = false;
+}
+
+:for every pair of adjacent numbers:
+  	:the difference must be between 1 and 3.
+	:if the direction changes (increasing then decreasing) it becomes unsafe.
+	:if any check fails the loop stops
+
+6)printing the results 
+
+if (safe) {
+    printf("line %d: safe\n", line_num);
+    safe_count++;
+} else {
+    printf("line %d: unsafe\n", line_num);
+}
+line_num++;
+
+:prints whether the report is safe or unsafe
+:increments safe_count if its valid.
+7)final output
+
+fclose(f);
+printf("total safe units:%d\n",safe_count);
+return 0;
+:close the inpur file.
+:print the total number of safe reports.
+
+\\compile the program with gcc day2_part1.c -o day2_part1.exe
+

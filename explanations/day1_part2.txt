@@ -1,0 +1,66 @@
+Day1_part2.txt
+
+Explanation of the Solution – Part Two
+
+This C program calculates a similarity score between two lists of location IDs, corresponding to Day 1, Part 2 of the "Historian Hysteria" puzzle.
+
+Unlike Part 1, where we minimized the distance between two lists, here we count how often each number from the left list appears in the right list, and multiply the number by its occurrence count.
+
+Step-by-step explanation:
+
+Reading the Input:
+
+The program opens the file input1.txt containing pairs of integers (location IDs).
+
+The first number of each pair is stored in the left[] array and the second in the right[] array.
+
+We assume a maximum size of N = 1000.
+
+Calculating the Similarity Score:
+
+For each number in left[i], the program counts how many times this number appears in the entire right[] array.
+
+This is done using a nested loop: the outer loop iterates through left[], and the inner loop scans right[] to count occurrences.
+
+The contribution of each number to the score is left[i] * count, which is added to a running total called score.
+
+Output:
+
+After processing all numbers in the left list, the program prints the total similarity score.
+
+Why this works:
+
+The problem explicitly asks to multiply each left number by the number of times it occurs in the right list.
+
+The nested loop approach ensures we check each combination and sum up all contributions.
+
+For small or moderate input sizes, this brute-force method works efficiently enough.
+
+Example:
+
+Input lists:
+
+Left:  3 4 2 1 3 3
+Right: 4 3 5 3 9 3
+
+
+Processing:
+
+3 appears 3 times in the right list → 3 * 3 = 9
+
+4 appears 1 time → 4 * 1 = 4
+
+2 appears 0 times → 2 * 0 = 0
+
+1 appears 0 times → 1 * 0 = 0
+
+3 appears 3 times → 3 * 3 = 9
+
+3 appears 3 times → 3 * 3 = 9
+
+Total similarity score = 9 + 4 + 0 + 0 + 9 + 9 = 31
+
+Conclusion:
+The program correctly calculates the total similarity score by multiplying each number in the left list by its occurrence count in the right list. For the actual puzzle input, it outputs the correct answer: 23387399.
+
+\\compile the program with gcc day1_part2.c -o day1_part2.exe
