@@ -89,5 +89,7 @@ return 0;
 :close the inpur file.
 :print the total number of safe reports.
 
+For the actual puzzle input, it outputs the correct answer: 572.
+
 \\compile the program with gcc day2_part1.c -o day2_part1.exe
 
