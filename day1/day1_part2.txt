@@ -1,6 +1,7 @@
 Day1_part2.txt
-
 Explanation of the Solution – Part Two
+
+\\compile the program with gcc day1_part2.c -o day1_part2.exe
 
 This C program calculates a similarity score between two lists, corresponding of the "Historian Hysteria" puzzle.
 
@@ -61,4 +62,4 @@ Total similarity score = 9 + 4 + 0 + 0 + 9 + 9 = 31
 
 The program correctly calculates the total similarity score by multiplying each number in the left list by its occurrence count in the right list. For the actual puzzle input, it outputs the correct answer: 23387399.
 
-\\compile the program with gcc day1_part2.c -o day1_part2.exe
+
