@@ -1,3 +1,6 @@
+Day2_part1.txt
+Explanation of the Solution
+
 This C program analyzes a text file (input1.txt) where each line represents a report consisting of space-separated integers. For each report, the program checks whether it is safe according to two rules:
 
 All numbers must be strictly increasing or strictly decreasing (no mix).
@@ -35,7 +38,7 @@ while (token != NULL) {
     token = strtok(NULL, " \n");
 }
 
-:each number from the line is extracting using strtok.
+:each number from the line is extracted using strtok.
 :atoi converts the extracted string into integer.
 :all numbers are stored in arr,and n in the count.
 
@@ -60,7 +63,7 @@ for (int i = 1; i < n && safe; i++) {
     if (!increasing && d > 0) safe = false;
 }
 
-:for every pair of adjacent numbers:
+    :for every pair of adjacent numbers:
   	:the difference must be between 1 and 3.
 	:if the direction changes (increasing then decreasing) it becomes unsafe.
 	:if any check fails the loop stops
@@ -77,6 +80,7 @@ line_num++;
 
 :prints whether the report is safe or unsafe
 :increments safe_count if its valid.
+
 7)final output
 
 fclose(f);
