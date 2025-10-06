@@ -97,6 +97,7 @@ Finaly
 printf("safe reports: %d\n", safe_count);
 :prints the results.
 
+For the actual puzzle input, it outputs the correct answer: 612
 
 
 compile the program with gcc day2_part2.c -o day2_part2.exe
