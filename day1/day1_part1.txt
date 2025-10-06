@@ -8,7 +8,7 @@ Step-by-step explanation:
 
 Reading the Input:
 
-The program opens the file input1.txt, which contains pairs of integers (location IDs) on each line.
+The program opens the file input1.txt, which contains pairs of integers on each line.
 
 It reads the first number of each pair into an array called left[] and the second number into an array called right[].
 
@@ -37,7 +37,7 @@ Finally, the program prints the total distance to the console.
 
 Pairing numbers after sorting guarantees that each left number is matched with the closest possible right number, which minimizes the sum of absolute differences.
 
-This is a simple greedy approach, which is optimal for this type of problem.
+This is a simple greedy approach, is works for this type of problem.
 
 Example:
 
@@ -71,7 +71,6 @@ Total distance = 2 + 1 + 0 + 1 + 2 + 5 = 11
 
 This matches the example provided in the puzzle description.
 
-Conclusion:
-The program efficiently computes the total distance between the two location ID lists by reading the input, sorting both arrays, and summing the absolute differences. For the actual puzzle input, it correctly outputs 1197984.
+The program efficiently computes the total distance between the two lists by reading the input, sorting both arrays, and summing the absolute differences. For the actual puzzle input, it correctly outputs 1197984.
 
 \\compile the program with gcc day1_part1.c -o day1_part1.exe
