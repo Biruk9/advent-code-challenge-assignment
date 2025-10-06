@@ -1,7 +1,7 @@
 Solving the Corrupted Memory mul(X,Y) Problem _ part1
 
-compile the program with "gcc day3_part2.c -o day3_part2.exe"
-Problem Overview
+
+
 
 The task was to analyze a corrupted memory file from a shopkeeper's computer. The memory contained instructions meant to multiply two numbers in the form:
 
@@ -85,8 +85,6 @@ At the end, print the total sum.
 
 printf("Total sum of all mul(X,Y) instructions: %d\n", total);
 
-Key Points
-
 Validation is strict: Only sequences that exactly match mul(X,Y) without extra characters or misplaced spaces are counted.
 
 Digits extraction: Each number is parsed digit by digit to handle multiple digits (1-3 digits per the problem statement).
@@ -97,6 +95,6 @@ Efficiency: Reading the file into a buffer allows scanning the entire memory qui
 
 Result
 
-After scanning the entire corrupted memory, the sum of all valid multiplication instructions was:
+After scanning the entire corrupted memory, the sum of all valid multiplication instructions was: 163931492
 
-163,931,492
+compile the program with "gcc day3_part2.c -o day3_part2.exe"
