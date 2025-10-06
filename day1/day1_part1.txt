@@ -2,7 +2,7 @@ Day1_part1.txt
 
 Explanation of the Solution
 
-This C program calculates the total “distance” between two lists of location IDs, corresponding to the puzzle "Historian Hysteria" (Day 1, Part 1). The distance is the sum of absolute differences between paired numbers from the two lists, paired optimally.
+This C program calculates the total “distance” between two lists of location IDs, corresponding to the puzzle "Historian Hysteria". The distance is the sum of absolute differences between paired numbers from the two lists, paired optimally.
 
 Step-by-step explanation:
 
