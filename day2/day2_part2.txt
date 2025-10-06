@@ -1,6 +1,8 @@
 Day2_part2.txt
 Explanation of the Solution
 
+compile the program with gcc day2_part2.c -o day2_part2.exe
+
 The program analyzes a file (input1.txt) where each line contains a sequence of integers . Its goal is to count how many reports are safe, based on two rules:
 
 Original Safety Rules:
@@ -100,4 +102,4 @@ printf("safe reports: %d\n", safe_count);
 For the actual puzzle input, it outputs the correct answer: 612
 
 
-compile the program with gcc day2_part2.c -o day2_part2.exe
+
