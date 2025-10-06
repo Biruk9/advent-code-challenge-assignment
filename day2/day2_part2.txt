@@ -1,4 +1,5 @@
-day2_part1
+Day2_part2.txt
+Explanation of the Solution
 
 The program analyzes a file (input1.txt) where each line contains a sequence of integers . Its goal is to count how many reports are safe, based on two rules:
 
@@ -14,13 +15,13 @@ Original Safety Rules:
 
 Extra Rule for Part Two:
 
-If a report is not safe, it can still count as safe if removing exactly one number makes it safe.
+-If a report is not safe, it can still count as safe if removing exactly one number makes it safe.
 
 This feature is called the Problem Dampener.
 
 The final output prints how many reports are safe under these conditions.
 
-2. Function: is_safe(int arr[], int n)
+1)Function: is_safe(int arr[], int n)
 
 This function checks if a sequence is safe without using the dampener.
 
@@ -48,7 +49,7 @@ for (int i = 1; i < n; i++) {
 
 If all checks pass, return true.
 
-Function: is_safe_with_dampener(int arr[], int n)
+2)Function: is_safe_with_dampener(int arr[], int n)
 
 This function applies both normal safety rules and the Problem Dampener:
 
@@ -73,7 +74,7 @@ for (int i = 0; i < n; i++) {
 
 This implements the Problem Dampener rule.
 
-Main Function Logic
+3)Main Function Logic
 FILE *f = fopen("input1.txt", "r");
 :Opens the report file for reading.
 
@@ -84,14 +85,18 @@ while (1) {
         if (fgetc(f) == '\n') break;
     }
     if (n == 0) break;
-Reads numbers into arr[] until a newline ends the line.
+:Reads numbers into arr[] until a newline ends the line.
 
-Each line is processed separately.
+:Each line is processed separately.
 
-if (is_safe_with_dampener(arr, n)) safe_count++;
+:if (is_safe_with_dampener(arr, n)) safe_count++;
 
 :Applies the full safety logic with dampener.
 
 Finaly
 printf("safe reports: %d\n", safe_count);
+:prints the results.
+
+
+
 compile the program with gcc day2_part2.c -o day2_part2.exe
