@@ -50,7 +50,6 @@ Input file:
 3 9
 3 3
 
-
 Steps:
 
 left[] = [3,4,2,1,3,3] → sorted → [1,2,3,3,3,4]
@@ -66,10 +65,7 @@ abs(3-4) = 1
 abs(3-5) = 2
 abs(4-9) = 5
 
-
 Total distance = 2 + 1 + 0 + 1 + 2 + 5 = 11
-
-This matches the example provided in the puzzle description.
 
 The program efficiently computes the total distance between the two lists by reading the input, sorting both arrays, and summing the absolute differences. For the actual puzzle input, it correctly outputs 1197984.
 
