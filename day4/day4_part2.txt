@@ -1,8 +1,9 @@
-X-MAS Pattern Search – Detecting “MAS” in an X Shape
+Day4_part2.txt
+Explanation of the Solution
 
 compile the program with "gcc day4_part2.c -o day4_part2.exe"
 
-Problem Overview
+X-MAS Pattern Search – Detecting “MAS” in an X Shape
 
 This part of the puzzle was a variation of the previous XMAS word search. Instead of searching for the word XMAS, the task was to detect X-MAS patterns, defined as:
 
@@ -40,10 +41,6 @@ Check if the center cell is 'A'.
 
 Examine the diagonal neighbors:
 
-Diagonal	Neighbor cells	Valid MAS?
-Top-left ↘ Bottom-right	(i-1,j-1) and (i+1,j+1)	M-S or S-M
-Top-right ↘ Bottom-left	(i-1,j+1) and (i+1,j-1)	M-S or S-M
-
 If both diagonals match, increment the count.
 
 if(grid[i][j] == 'A') {
@@ -64,18 +61,15 @@ Print the total number of X-MAS patterns detected.
 
 printf("Total X-MAS patterns: %d\n", count);
 
-Key Points
 
 Pattern Detection: The pattern is recognized only when the center is ‘A’ and the diagonals form MAS forwards or backwards.
 
-Bounds Checking: Only internal cells (1..rows-2, 1..cols-2) are checked to avoid out-of-bounds errors.
+Bounds Checking: Only internal cells are checked to avoid out-of-bounds errors.
 
 Flexible Matching: Both M-S and S-M are considered valid diagonals.
 
 Overlapping Patterns: Patterns can overlap, and each valid center counts independently.
 
-Result
-
-After processing the input word search grid:
+After processing the input:
 
 Total X-MAS patterns = 1936
