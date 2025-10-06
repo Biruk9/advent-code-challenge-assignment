@@ -1,8 +1,5 @@
-Solving the Corrupted Memory mul(X,Y) Problem
-
-compile the program with "gcc day3_part2.c -o day3_part2.exe"
-
-Problem Overview
+Day3_part2.txt
+Explanation of the Solution
 
 In addition to the corrupted mul(X,Y) instructions from Part One, Part Two introduced conditional instructions:
 
@@ -104,4 +101,6 @@ Result
 
 After processing the corrupted memory with conditional instructions:
 
-Total sum of enabled mul(X,Y) instructions = 76,911,921
+Total sum of enabled mul(X,Y) instructions = 76911921
+
+compile the program with "gcc day3_part2.c -o day3_part2.exe"
