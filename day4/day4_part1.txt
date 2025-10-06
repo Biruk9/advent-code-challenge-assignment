@@ -1,5 +1,4 @@
 compile the program with"gcc day4_part1.c -o day4_part1.exe"
-
 Report: Ceres Search – Counting Occurrences of “XMAS”
 Problem Overview
 
@@ -35,19 +34,7 @@ while(fgets(grid[rows], MAX, f)) {
 
 Step 2: Define Directions to Search
 
-Define 8 directions for searching the word:
-
-| Direction   | dx | dy |
-| ----------- | -- | -- |
-| Right       | 0  | 1  |
-| Left        | 0  | -1 |
-| Down        | 1  | 0  |
-| Up          | -1 | 0  |
-| Diagonal DR | 1  | 1  |
-| Diagonal DL | 1  | -1 |
-| Diagonal UR | -1 | 1  |
-| Diagonal UL | -1 | -1 |
-
+Define 8 directions for searching the word
 
 This allows the word to be found in all possible orientations.
 
@@ -86,8 +73,6 @@ After scanning the entire grid, print the total count of XMAS occurrences.
 
 printf("Total occurrences of '%s': %d\n", WORD, count);
 
-Key Points
-
 8-directional search ensures no occurrence is missed.
 
 Bounds checking prevents access outside the grid.
@@ -95,8 +80,6 @@ Bounds checking prevents access outside the grid.
 Overlapping occurrences are counted individually.
 
 Efficient use of nested loops allows scanning large grids quickly.
-
-Result
 
 After processing the input word search:
 
