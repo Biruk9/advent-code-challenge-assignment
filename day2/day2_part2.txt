@@ -1,4 +1,4 @@
-1. Program Purpose
+day2_part1
 
 The program analyzes a file (input1.txt) where each line contains a sequence of integers . Its goal is to count how many reports are safe, based on two rules:
 
