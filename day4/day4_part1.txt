@@ -1,8 +1,11 @@
-compile the program with"gcc day4_part1.c -o day4_part1.exe"
-Report: Ceres Search – Counting Occurrences of “XMAS”
-Problem Overview
+Day4_part1.txt
+Explanation of the Solution
 
-You were given a word search grid containing letters arranged in rows and columns. The task was to find all occurrences of the word XMAS in the grid. The word could appear:
+compile the program with"gcc day4_part1.c -o day4_part1.exe"
+
+Ceres Search – Counting Occurrences of “XMAS”
+
+I was  given a word search grid containing letters arranged in rows and columns. The task was to find all occurrences of the word XMAS in the grid. The word could appear:
 
 Horizontally (left → right or right → left)
 
