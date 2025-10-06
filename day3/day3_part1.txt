@@ -1,6 +1,8 @@
 Day3_part1.txt
 Explanation of the Solution
 
+compile the program with "gcc day3_part2.c -o day3_part2.exe"
+
 The task was to analyze a corrupted memory file from a shopkeeper's computer. The memory contained instructions meant to multiply two numbers in the form:
 
 mul(X,Y)
@@ -91,4 +93,4 @@ Reading the file into a buffer allows scanning the entire memory quickly in a si
 
 After scanning the entire corrupted memory, the sum of all valid multiplication instructions was: 163931492
 
-compile the program with "gcc day3_part2.c -o day3_part2.exe"
+
