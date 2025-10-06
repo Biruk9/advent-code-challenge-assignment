@@ -1,6 +1,8 @@
 Day2_part1.txt
 Explanation of the Solution
 
+\\compile the program with gcc day2_part1.c -o day2_part1.exe
+
 This C program analyzes a text file (input1.txt) where each line represents a report consisting of space-separated integers. For each report, the program checks whether it is safe according to two rules:
 
 All numbers must be strictly increasing or strictly decreasing (no mix).
@@ -91,5 +93,5 @@ return 0;
 
 For the actual puzzle input, it outputs the correct answer: 572.
 
-\\compile the program with gcc day2_part1.c -o day2_part1.exe
+
 
