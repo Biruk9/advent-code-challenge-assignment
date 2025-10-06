@@ -1,6 +1,7 @@
 Day1_part1.txt
-
 Explanation of the Solution
+
+\\compile the program with gcc day1_part1.c -o day1_part1.exe
 
 This C program calculates the total “distance” between two lists, corresponding to the puzzle "Historian Hysteria". The distance is the sum of absolute differences between paired numbers from the two lists, paired optimally.
 
@@ -69,4 +70,4 @@ Total distance = 2 + 1 + 0 + 1 + 2 + 5 = 11
 
 The program efficiently computes the total distance between the two lists by reading the input, sorting both arrays, and summing the absolute differences. For the actual puzzle input, it correctly outputs 1197984.
 
-\\compile the program with gcc day1_part1.c -o day1_part1.exe
+
