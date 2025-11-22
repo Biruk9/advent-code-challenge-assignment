@@ -1,2 +1,19 @@
-# Ignore all .exe files
+# Ignore compiled binaries
 *.exe
+*.out
+*.o
+
+# Ignore temporary files
+*.tmp
+*.log
+*.txt
+*.o
+filemanager
+
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Visual Studio Code settings (optional)
+.vscode/
